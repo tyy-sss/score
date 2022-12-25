@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.go.mapper.AttractionMapper">
+
+    <select id="allAttractionForBusiness" resultType="java.lang.Integer">
+        select count(*)
+        from attraction t, category c,business_goods b
+        where b.business_id = #{businessId}
+          and b.goods_id = c.id
+          and c.type = "景点"
+          and t.id = c.product_id
+    </select>
+
+    <select id="pageAttractionForBusiness" resultType="com.example.go.entity.Attraction">
+        select t.*
+        from attraction t, category c,business_goods b
+        where b.business_id = #{businessId}
+          and b.goods_id = c.id
+          and c.type = "景点"
+          and t.id = c.product_id
+            limit #{current} , #{size}
+    </select>
+
+    <select id="getAdviceHotAttraction" resultType="com.example.go.entity.Attraction">
+        select * from attraction
+        order by point desc , comment_num desc, collection_num desc
+            limit #{num}
+    </select>
+
+    <select id="getAdviceCheapAttraction" resultType="com.example.go.entity.Attraction">
+        select * from attraction
+        order by price
+            limit #{begin}, #{num}
+    </select>
+
+    <select id="getAttractionNews" resultType="com.example.go.entity.Attraction">
+        select m.business_name businessName, m.business_place businessPlace, h.*
+        from attraction h, manager m, business_goods bg
+        where h.category_id = bg.goods_id
+          and m.id = bg.business_id
+          and h.id = #{id}
+    </select>
+
+</mapper>

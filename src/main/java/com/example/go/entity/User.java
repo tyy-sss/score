@@ -7,7 +7,8 @@ import lombok.Data;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * 用户
@@ -26,6 +27,8 @@ public class User implements Serializable {
 
     private String password;
 
+    private int score;//积分
+
     private String phone;
 
     private String sex;
@@ -36,9 +39,18 @@ public class User implements Serializable {
 
     private String avatar;
 
+    private int age;
+
+    private Timestamp birthday;
+
     private Integer status;
 
-    private LocalDateTime createTime;
+    private double account;
+
+    private Timestamp createTime;
+
+    //最近一次上线时间
+    private Timestamp upTime;
 
     @TableField(exist = false)
     private String token;

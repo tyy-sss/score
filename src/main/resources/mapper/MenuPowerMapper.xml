@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.go.mapper.MenuPowerMapper">
+
+<!--  获得没有子菜单的菜单  -->
+
+    <select id="getOneMenu" resultType="com.example.go.entity.Menu">
+        select m.path , m.name , m.label , m.icon , m.url
+        from menu m,menu_power mp
+        where m.id =  mp.menu_id
+          and length(m.path) > 0
+          and mp.status = #{status}
+    </select>
+
+    <select id="getTwoMenu" resultType="com.example.go.entity.Menu">
+        select m.*
+        from menu m,menu_power mp
+        where m.id =  mp.menu_id
+          and length(m.path) = 0
+          and mp.status = #{status}
+    </select>
+
+    <select id="getChildren" resultType="com.example.go.entity.Menu">
+        select *
+        from menu
+        where father_id = #{id}
+    </select>
+
+
+</mapper>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.go.mapper.OrderMapper">
+
+    <select id="checkPageOrder" resultType="com.example.go.entity.Order">
+        select o.*
+        from
+            `order` o
+        where o.user_id = #{uId}
+            limit #{current} , #{size}
+    </select>
+
+    <select id="allOrder" resultType="java.lang.Integer">
+        select count(*)
+        from
+            `order` o
+        where o.user_id = #{uId}
+    </select>
+
+    <select id="checkPageOrderByTime" resultType="com.example.go.entity.Order">
+        select o.*
+        from
+            `order` o
+        where o.user_id = #{uId}
+          and to_days(o.order_time)=to_days(#{time})
+            limit #{current} , #{size}
+    </select>
+
+    <select id="allOrderByTime" resultType="java.lang.Integer">
+        select count(*)
+        from
+            `order` o
+        where o.user_id = #{uId}
+          and to_days(o.order_time)=to_days(#{time})
+    </select>
+
+    <select id="checkPageOrderByType" resultType="com.example.go.entity.Order">
+        select o.*
+        from
+            `order` o,order_detail od,category c
+        where o.user_id = #{uId}
+          and o.id = od.order_id
+          and od.category_id = c.id
+          and c.type = #{type}
+            limit #{current} , #{size}
+    </select>
+
+    <select id="allOrderByType" resultType="java.lang.Integer">
+        select count(*)
+        from
+            `order` o,order_detail od,category c
+        where o.user_id = #{uId}
+          and o.id = od.order_id
+          and od.category_id = c.id
+          and c.type = #{type}
+    </select>
+
+    <select id="checkPageOrderByTimeAndType" resultType="com.example.go.entity.Order">
+        select o.*
+        from
+        `order` o,order_detail od,category c
+        where o.user_id = #{uId}
+          and o.id = od.order_id
+          and od.category_id = c.id
+          and c.type = #{type}
+          and to_days(o.order_time)=to_days(#{time})
+            limit #{current} , #{size}
+    </select>
+
+    <select id="allOrderByTimeAndType" resultType="java.lang.Integer">
+        select count(*)
+        from
+            `order` o,order_detail od,category c
+        where o.user_id = #{uId}
+          and o.id = od.order_id
+          and od.category_id = c.id
+          and c.type = #{type}
+          and to_days(o.order_time)=to_days(#{time})
+    </select>
+
+    <select id="checkPageOrderByStatus" resultType="com.example.go.entity.Order">
+        select o.*
+        from
+            `order` o
+        where o.user_id = #{uId}
+        and o.status = #{status}
+            limit #{current} , #{size}
+    </select>
+
+    <select id="allOrderByStatus" resultType="java.lang.Integer">
+        select count(*)
+        from
+            `order` o
+        where o.user_id = #{uId}
+          and o.status = #{status}
+    </select>
+
+    <select id="checkPageOrderByStatusAndTime" resultType="com.example.go.entity.Order">
+        select o.*
+        from
+            `order` o
+        where o.user_id = #{uId}
+          and to_days(o.order_time)=to_days(#{time})
+          and o.status = #{status}
+            limit #{current} , #{size}
+    </select>
+
+    <select id="allOrderByStatusAndTime" resultType="java.lang.Integer">
+        select count(*)
+        from
+            `order` o
+        where o.user_id = #{uId}
+          and to_days(o.order_time)=to_days(#{time})
+          and o.status = #{status}
+    </select>
+
+    <select id="checkPageOrderByStatusAndType" resultType="com.example.go.entity.Order">
+        select o.*
+        from
+            `order` o,order_detail od,category c
+        where o.user_id = #{uId}
+          and o.id = od.order_id
+          and od.category_id = c.id
+          and c.type = #{type}
+          and o.status = #{status}
+            limit #{current} , #{size}
+    </select>
+
+    <select id="allOrderByStatusAndType" resultType="java.lang.Integer">
+        select count(*)
+        from
+            `order` o,order_detail od,category c
+        where o.user_id = #{uId}
+          and o.id = od.order_id
+          and od.category_id = c.id
+          and c.type = #{type}
+          and o.status = #{status}
+    </select>
+
+    <select id="checkPageOrderByStatusAndTimeAndType" resultType="com.example.go.entity.Order">
+        select o.*
+        from
+            `order` o,order_detail od,category c
+        where o.user_id = #{uId}
+          and o.id = od.order_id
+          and od.category_id = c.id
+          and c.type = #{type}
+          and to_days(o.order_time)=to_days(#{time})
+          and o.status = #{status}
+            limit #{current} , #{size}
+    </select>
+
+    <select id="allOrderByStatusAndTimeAndType" resultType="java.lang.Integer">
+        select count(*)
+        from
+            `order` o,order_detail od,category c
+        where o.user_id = #{uId}
+          and o.id = od.order_id
+          and od.category_id = c.id
+          and c.type = #{type}
+          and to_days(o.order_time)=to_days(#{time})
+          and o.status = #{status}
+    </select>
+
+    <update id="payOrder">
+        update `order` set status = 2 , pay_method = #{type}
+            where id = #{id}
+    </update>
+</mapper>

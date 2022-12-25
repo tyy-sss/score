@@ -44,6 +44,18 @@ spring:
     multipart:
       max-request-size: 100MB
       max-file-size: 10MB
+#  #thymeleaf
+#  thymeleaf:
+#    cache: true
+#    prefi: classpath:/templates/
+#    suffix: .html
+#    mode: HTML5
+#    encoding: UTF-8
+#    content-type: text/html
+  #搜索引擎
+#  elasticsearch:
+#        jest:
+#          uris:http://localhost:9200
 
 mybatis-plus:
   configuration:
@@ -53,6 +65,7 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: auto
+  mapper-locations: classpath:mapper/*.xml
 #文件上传的位置
 file:
   ###静态资源对外暴露的访问路径

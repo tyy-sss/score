@@ -8,6 +8,33 @@ public interface MessageNews {
     //用户注册
     String MESSAGE_USER_REGISTER_FAIL_EMAIL_EXIST="邮箱已经注册";
     String MESSAGE_USER_REGISTER_FAIL_EMAIL_NOT_EXIST="邮箱没有注册";
+
+    //管理员登录
+    String MESSAGE_MANAGER_LOGIN_FAIL_EMAIL_WRONG="邮箱错误";
+    String MESSAGE_MANAGER_LOGIN_FAIL_PASSWORD_WRONG="密码错误";
+
+    //管理员注册
+    String MESSAGE_MANAGER_REGISTER_FAIL_EMAIL_EXIST="邮箱已经注册";
+    String MESSAGE_MANAGER_REGISTER_FAIL_EMAIL_NOT_EXIST="邮箱没有注册";
+
+    String MESSAGE_MANAGER_COUNT_STOP="账号已禁用";
+
+    //管理员管理用户
+    String MESSAGE_MANAGER_ADD_USER_SUCCESS="添加用户成功";
+    String MESSAGE_MANAGER_CHANGE_USER_SUCCESS="修改用户成功";
+    String  MESSAGE_MANAGER_CHANGE_USER_FAIL="修改用户失败";
+    String MESSAGE_MANAGER_DELETE_USER_SUCCESS="删除用户成功";
+    String MESSAGE_MANAGER_DELETE_USER_FAIL="删除用户失败";
+
+    //管理员管理用户
+    String MESSAGE_MANAGER_ADD_BUSINESS_SUCCESS="添加商家成功";
+    String MESSAGE_MANAGER_CHANGE_BUSINESS_SUCCESS="修改商家成功";
+    String  MESSAGE_MANAGER_CHANGE_BUSINESS_FAIL="修改商家失败";
+    String MESSAGE_MANAGER_DELETE_BUSINESS_SUCCESS="删除商家成功";
+    String MESSAGE_MANAGER_DELETE_BUSINESS_FAIL="删除商家失败";
+    String MESSAGE_MANAGER_CHANGE_USER_STATUS_SUCCESS="修改用户状态成功";
+    String MESSAGE_MANAGER_CHANGE_USER_STATUS_FAIL="修改用户状态失败";
+
     //发送验证码
     String MESSAGE_EMAIL_CODE_SEND_SENT="邮箱验证码已发送";
     //验证码过期
@@ -20,4 +47,54 @@ public interface MessageNews {
     String  MESSAGE_CHANGE_PASSWORD_FAIL="修改密码失败";
     //下载文件为空
     String  MESSAGE_FAIL_UPLOAD_FAIL="文件上传失败，文件为空";
+
+
+    //机票
+    String MESSAGE_BUSINESS_ADD_TICKET_FAIL="商家添加机票失败";
+    String MESSAGE_BUSINESS_ADD_TICKET_SUCCESS="商家添加机票成功";
+    String MESSAGE_MANAGER_CHANGE_TICKET_FAIL="修改机票失败";
+    String MESSAGE_MANAGER_CHANGE_TICKET_SUCCESS="修改机票成功";
+    String MESSAGE_MANAGER_DELETE_TICKET_SUCCESS="删除机票成功";
+
+    //火车
+    String MESSAGE_BUSINESS_ADD_TRAIN_FAIL="商家添加火车失败";
+    String MESSAGE_BUSINESS_ADD_TRAIN_SUCCESS="商家添加火车成功";
+    String MESSAGE_MANAGER_CHANGE_TRAIN_FAIL="修改火车失败";
+    String MESSAGE_MANAGER_CHANGE_TRAIN_SUCCESS="修改火车成功";
+    String MESSAGE_MANAGER_DELETE_TRAIN_SUCCESS="删除火车成功";
+
+    //高铁
+    String MESSAGE_BUSINESS_ADD_RAILWAY_FAIL="商家添加高铁失败";
+    String MESSAGE_BUSINESS_ADD_RAILWAY_SUCCESS="商家添加高铁成功";
+    String MESSAGE_MANAGER_CHANGE_RAILWAY_FAIL="修改高铁失败";
+    String MESSAGE_MANAGER_CHANGE_RAILWAY_SUCCESS="修改高铁成功";
+    String MESSAGE_MANAGER_DELETE_RAILWAY_SUCCESS="删除高铁成功";
+
+    //酒店
+    String MESSAGE_BUSINESS_ADD_HOTEL_FAIL="商家添加酒店失败";
+    String MESSAGE_BUSINESS_ADD_HOTEL_SUCCESS="商家添加酒店成功";
+    String MESSAGE_MANAGER_CHANGE_HOTEL_FAIL="修改酒店失败";
+    String MESSAGE_MANAGER_CHANGE_HOTEL_SUCCESS="修改酒店成功";
+    String MESSAGE_MANAGER_DELETE_HOTEL_SUCCESS="删除酒店成功";
+
+    //景点
+    String MESSAGE_BUSINESS_ADD_ATTRACTION_FAIL="商家添加景点失败";
+    String MESSAGE_BUSINESS_ADD_ATTRACTION_SUCCESS="商家添加景点成功";
+    String MESSAGE_MANAGER_CHANGE_ATTRACTION_FAIL="修改景点失败";
+    String MESSAGE_MANAGER_CHANGE_ATTRACTION_SUCCESS="修改景点成功";
+    String MESSAGE_MANAGER_DELETE_ATTRACTION_SUCCESS="删除景点成功";
+
+    //下单
+    String MESSAGE_ORDER_NUM_OUT_OF_STOCK="下单产品库存不足";
+    String MESSAGE_ORDER_NUM_NOT_OUT_OF_STOCK="下单产品库存足够";
+
+    //评论
+    String MESSAGE_SEND_COMMENT_SUCCESS="发布评论成功";
+    String MESSAGE_SEND_COMMENT_FAIL="发布评论失败";
+    String MESSAGE_DELETE_COMMENT_SUCCESS="删除评论成功";
+    String MESSAGE_DELETE_COMMENT_FAIL="删除评论失败";
+
+    //支付
+    String MESSAGE_PAY_ORDER_SUCCESS="支付成功";
+    String MESSAGE_PAY_ORDER_FAIL="支付失败";
 }

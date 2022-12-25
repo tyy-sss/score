@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.go.mapper.OrderDetailMapper">
+
+    <select id="getOrderNews" resultType="com.example.go.entity.OrderDetail">
+        select o.code, o.order_time as orderTime, od.*
+        from `order` o, order_detail od
+        where o.id = od.order_id
+          and o.id = #{id}
+    </select>
+
+    <select id="checkPageOrderByManager" resultType="com.example.go.entity.OrderDetail">
+        select o.code, o.order_time as orderTime, od.*
+        from
+            `order` o,order_detail od
+        where  o.status = #{status}
+          and o.id = od.order_id
+            limit #{current} , #{size}
+    </select>
+
+    <select id="allOrderByManager" resultType="java.lang.Integer">
+        select count(*)
+        from
+            `order` o,order_detail od
+        where o.status = #{status}
+          and o.id = od.order_id
+    </select>
+
+    <select id="checkPageOrderByManagerAndCode" resultType="com.example.go.entity.OrderDetail">
+        select o.code, o.order_time as orderTime, od.*
+        from
+            `order` o,order_detail od
+        where  o.status = #{status}
+          and o.id = od.order_id
+          and o.code like concat('%',#{code},'%' )
+            limit #{current} , #{size}
+    </select>
+
+    <select id="allOrderByManagerAndCode" resultType="java.lang.Integer">
+        select count(*)
+        from
+            `order` o,order_detail od
+        where o.status = #{status}
+          and o.code like concat('%',#{code},'%' )
+          and o.id = od.order_id
+    </select>
+
+
+    <select id="checkPageOrderByBusiness" resultType="com.example.go.entity.OrderDetail">
+        select o.code, o.order_time as orderTime, od.*
+        from
+            `order` o,order_detail od,category c,business_goods bg
+        where  o.status = #{status}
+          and o.id = od.order_id
+          and od.category_id = c.id
+          and bg.goods_id = c.id
+          and bg.business_id = #{bid}
+            limit #{current} , #{size}
+    </select>
+
+    <select id="allOrderByBusiness" resultType="java.lang.Integer">
+        select count(*)
+        from
+            `order` o,order_detail od,category c,business_goods bg
+        where  o.status = #{status}
+          and o.id = od.order_id
+          and od.category_id = c.id
+          and bg.goods_id = c.id
+          and bg.business_id = #{bid}
+    </select>
+
+    <select id="checkPageOrderByBusinessAndCode" resultType="com.example.go.entity.OrderDetail">
+        select o.code, o.order_time as orderTime, od.*
+        from
+            `order` o,order_detail od,category c,business_goods bg
+        where  o.status = #{status}
+          and o.code like concat('%',#{code},'%' )
+          and o.id = od.order_id
+          and od.category_id = c.id
+          and bg.goods_id = c.id
+          and bg.business_id = #{bid}
+            limit #{current} , #{size}
+    </select>
+
+    <select id="allOrderByBusinessAndCode" resultType="java.lang.Integer">
+        select count(*)
+        from
+            `order` o,order_detail od,category c,business_goods bg
+        where o.status = #{status}
+          and o.code like concat('%',#{code},'%' )
+          and o.id = od.order_id
+          and od.category_id = c.id
+          and bg.goods_id = c.id
+          and bg.business_id = #{bid}
+    </select>
+
+</mapper>

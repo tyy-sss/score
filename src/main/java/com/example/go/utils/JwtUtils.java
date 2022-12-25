@@ -1,9 +1,6 @@
 package com.example.go.utils;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.JwtBuilder;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 
 import java.util.Date;
 import java.util.UUID;
@@ -32,9 +29,22 @@ public class JwtUtils {
 
     //解析token
     public static Claims getClaimsByToken(String token){
-        return Jwts.parser()
-                .setSigningKey(secret)
-                .parseClaimsJwt(token)
-                .getBody();
+        Claims claims;try {
+            claims = Jwts.parser()
+                    .setSigningKey(secret) // 设置标识名
+                    .parseClaimsJws(token)  //解析token
+                    .getBody();
+        } catch (ExpiredJwtException e) {
+            claims = e.getClaims();
+        }
+
+        return claims;
+    }
+
+    //获得id
+    public static Integer getId(String token) {
+        Claims claimsByToken = JwtUtils.getClaimsByToken(token);
+        String bid = claimsByToken.getSubject();
+        return Integer.valueOf(bid);
     }
 }

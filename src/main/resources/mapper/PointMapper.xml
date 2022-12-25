@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.go.mapper.PointMapper">
+
+    <update id="changeHotelPoint">
+        update hotel set point =
+            (
+                select avg(point_num)
+                from point
+                where category_id = #{cid}
+            )
+        where id = #{id}
+    </update>
+
+    <update id="updatePointNum">
+        update point set point_num = #{point}
+        where category_id = #{cid}
+          and user_id = #{uid}
+    </update>
+
+    <select id="isPoint" resultType="com.example.go.entity.Point">
+        select *
+        from point
+        where category_id = #{cid}
+            and user_id = #{uid}
+    </select>
+
+</mapper>

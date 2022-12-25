@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.go.mapper.CategoryMapper">
+
+    <delete id="deleteContact">
+        delete
+        from category
+        where type = #{type}
+        and product_id = #{pid}
+    </delete>
+
+    <select id="getCategoryIdByGIdAndGType" resultType="java.lang.Integer">
+        select id
+        from category
+        where type = #{gType}
+        and product_id = #{gId}
+    </select>
+
+    <select id="getCategoryByCid" resultType="com.example.go.entity.Category">
+        select *
+            from category
+        where id = #{cid}
+    </select>
+
+</mapper>

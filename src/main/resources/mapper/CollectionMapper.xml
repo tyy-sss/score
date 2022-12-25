@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.go.mapper.CollectionMapper">
+
+    <update id="updateStatus">
+        update collection set status = #{status}, time = #{time}
+        where category_id = #{cid}
+          and user_id = #{uid}
+
+    </update>
+
+    <update id="changeHotelCollectionNum">
+        update hotel set collection_num =
+             (
+                 select sum(status)
+                 from collection
+                 where category_id = #{cid}
+             )
+        where id = #{id}
+    </update>
+
+    <select id="isCollection" resultType="com.example.go.entity.Collection">
+        select *
+        from collection
+        where category_id = #{cid}
+          and user_id = #{uid}
+    </select>
+
+    <select id="allCollectionForUser" resultType="java.lang.Integer">
+        select count(*)
+        from collection co,category c
+        where co.category_id = c.id
+            and c.type = #{type}
+            and co.user_id = #{uid}
+    </select>
+
+    <select id="HotelCollectionForUser" resultType="com.example.go.entity.Hotel">
+        select h.*
+        from collection co,category c,hotel h
+        where co.category_id = c.id
+          and c.type = "酒店"
+          and co.user_id = #{uid}
+          and h.id = c.product_id
+            limit #{current} , #{size}
+    </select>
+
+    <select id="allCollectionForUserByTime" resultType="java.lang.Integer">
+        select count(*)
+        from collection co,category c
+        where co.category_id = c.id
+          and c.type = #{type}
+          and co.user_id = #{uid}
+          and to_days(co.time)=to_days(#{time})
+    </select>
+
+    <select id="HotelCollectionForUserByTime" resultType="com.example.go.entity.Hotel">
+        select h.*
+        from collection co,category c,hotel h
+        where co.category_id = c.id
+          and c.type = "酒店"
+          and co.user_id = #{uid}
+          and to_days(co.time)=to_days(#{time})
+          and h.id = c.product_id
+            limit #{current} , #{size}
+    </select>
+
+    <select id="AttractionCollectionForUser" resultType="com.example.go.entity.Attraction">
+        select h.*
+        from collection co,category c,attraction h
+        where co.category_id = c.id
+          and c.type = "景点"
+          and co.user_id = #{uid}
+          and h.id = c.product_id
+            limit #{current} , #{size}
+    </select>
+
+    <select id="AttractionCollectionForUserByTime" resultType="com.example.go.entity.Attraction">
+        select h.*
+        from collection co,category c,attraction h
+        where co.category_id = c.id
+          and c.type = "景点"
+          and co.user_id = #{uid}
+          and to_days(co.time)=to_days(#{time})
+          and h.id = c.product_id
+            limit #{current} , #{size}
+    </select>
+
+</mapper>

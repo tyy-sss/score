@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.go.mapper.TrainMapper">
+
+    <select id="allTrainForBusiness" resultType="java.lang.Integer">
+        select count(*)
+        from train t, category c,business_goods b
+        where b.business_id = #{businessId}
+          and b.goods_id = c.id
+          and c.type = "火车"
+          and t.id = c.product_id
+    </select>
+
+    <select id="pageTrainForBusiness" resultType="com.example.go.entity.Train">
+        select t.*
+        from train t, category c,business_goods b
+        where b.business_id = #{businessId}
+          and b.goods_id = c.id
+          and c.type = "火车"
+          and t.id = c.product_id
+            limit #{current} , #{size}
+    </select>
+</mapper>
