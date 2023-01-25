@@ -54,4 +54,7 @@ public interface OrderMapper  extends BaseMapper<Order> {
 
     //支付订单
     int payOrder(int id,String type);
+
+    //修改订单的价钱
+    int changeAmount(double price,int id);
 }

@@ -15,4 +15,5 @@ public interface PointMapper extends BaseMapper<Point> {
 
     int changeHotelPoint(int cid,int id);
 
+    int changeAttractionPoint(int cid, int id);
 }

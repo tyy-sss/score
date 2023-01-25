@@ -50,7 +50,7 @@ public class AttractionController {
     }
 
     //得到景点的具体消息
-    @GetMapping("/hotelNews/{id}")
+    @GetMapping("/attractionNews/{id}")
     public R getHotelNews(@PathVariable("id") int id){
         System.out.println(id);
         Attraction attractionNews = attractionService.getAttractionNews(id);

@@ -7,4 +7,9 @@
         from user
         where username = #{username}
     </select>
+
+    <update id="saveScore">
+        update user set score = #{score}
+        where id = #{id}
+    </update>
 </mapper>

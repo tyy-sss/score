@@ -94,4 +94,11 @@
           and bg.business_id = #{bid}
     </select>
 
+    <select id="getAttractionOrderNews" resultType="com.example.go.entity.OrderDetail">
+        select o.code, o.order_time as orderTime, od.*
+        from `order` o, order_detail od
+        where o.id = od.order_id
+          and o.id = #{id}
+    </select>
+
 </mapper>

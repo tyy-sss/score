@@ -73,4 +73,14 @@
         where id = #{id}
     </update>
 
+    <update id="changeAttractionComment">
+        update attraction set comment_num =
+             (
+                 select count(*)
+                 from comment
+                 where category_id = #{cid}
+             )
+        where id = #{id}
+    </update>
+
 </mapper>

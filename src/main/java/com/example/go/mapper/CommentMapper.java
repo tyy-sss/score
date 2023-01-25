@@ -27,4 +27,6 @@ public interface CommentMapper extends BaseMapper<Comment> {
     //找到分类表的id
     int findCid(int id);
     int changeHotelComment(int cid, int id);
+
+    int changeAttractionComment(int cid, int id);
 }

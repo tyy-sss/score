@@ -41,6 +41,8 @@ public class PointService {
     public void changePoint(int cid,int id,String type){
         if( type.equals("酒店") ){
             pointMapper.changeHotelPoint(cid,id);
+        }else if(type.equals("景点")){
+            pointMapper.changeAttractionPoint(cid,id);
         }
     }
 

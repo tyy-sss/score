@@ -53,6 +53,8 @@ public class CollectionService {
     public void changeCollection(int cid,int id,String type){
         if( type.equals("酒店") ){
             collectionMapper.changeHotelCollectionNum(cid,id);
+        }else if ( type.equals("景点") ){
+            collectionMapper.changeAttractionCollectionNum(cid,id);
         }
     }
 

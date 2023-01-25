@@ -19,6 +19,17 @@
         where id = #{id}
     </update>
 
+    <update id="changeAttractionCollectionNum">
+        update attraction set collection_num =
+                 (
+                     select sum(status)
+                     from collection
+                     where category_id = #{cid}
+                 )
+        where id = #{id}
+    </update>
+
+
     <select id="isCollection" resultType="com.example.go.entity.Collection">
         select *
         from collection

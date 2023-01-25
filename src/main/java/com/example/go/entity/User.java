@@ -27,7 +27,7 @@ public class User implements Serializable {
 
     private String password;
 
-    private int score;//积分
+    private double score;//积分
 
     private String phone;
 

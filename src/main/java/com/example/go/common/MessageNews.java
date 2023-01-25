@@ -97,4 +97,7 @@ public interface MessageNews {
     //支付
     String MESSAGE_PAY_ORDER_SUCCESS="支付成功";
     String MESSAGE_PAY_ORDER_FAIL="支付失败";
+
+    //积分支付
+    String MESSAGE_POINT_NOT_ENOUGH="您的积分不足,无法购买";
 }

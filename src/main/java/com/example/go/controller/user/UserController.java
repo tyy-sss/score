@@ -132,4 +132,17 @@ public class UserController {
         redisTemplate.delete(user.getEmail());
         return R.success(user1);
     }
+
+    @PostMapping("/changePerson")
+    public R changePerson(@RequestBody User user){
+        System.out.println(user);
+        int i = userService.changePerson(user);
+        return R.success(null);
+    }
+
+    @GetMapping("/getPerson/{id}")
+    public R getPerson(@PathVariable("id") int id){
+        User user = userService.getPerson(id);
+        return R.success(user);
+    }
 }

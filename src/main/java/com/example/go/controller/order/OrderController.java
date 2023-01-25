@@ -14,6 +14,7 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -52,6 +53,11 @@ public class OrderController {
         return R.success(orderNews);
     }
 
+    @GetMapping("/getAttractionOrderNews/{id}")
+    public R getAttractionOrderNews(@PathVariable("id") int id){
+        List<OrderDetail> orderNews = orderDetailService.getAttractionOrderNews(id);
+        return R.success(orderNews);
+    }
     //支付订单
     @PostMapping("/payOrder/{id}/{type}")
     public R payOrder(@PathVariable("id") int id,@PathVariable("type") String type){

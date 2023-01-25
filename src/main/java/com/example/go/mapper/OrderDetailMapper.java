@@ -28,4 +28,5 @@ public interface OrderDetailMapper  extends BaseMapper<OrderDetail> {
 
     int allOrderByBusinessAndCode(int bid, String status, String code);
 
+    List<OrderDetail> getAttractionOrderNews(int id);
 }

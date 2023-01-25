@@ -9,4 +9,7 @@ public interface UserMapper extends BaseMapper<User> {
 
     //根据username来找user
     User getUserByUsername(String username);
+
+    //修改用户的积分
+    int saveScore(int id,double score);
 }

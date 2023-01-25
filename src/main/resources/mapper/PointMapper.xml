@@ -18,6 +18,16 @@
           and user_id = #{uid}
     </update>
 
+    <update id="changeAttractionPoint">
+        update attraction set point =
+             (
+                 select avg(point_num)
+                 from point
+                 where category_id = #{cid}
+             )
+        where id = #{id}
+    </update>
+
     <select id="isPoint" resultType="com.example.go.entity.Point">
         select *
         from point

@@ -48,10 +48,6 @@ public class WebSocketServer {
         WebSocketServer.managerService = managerService;
     }
 
-
-
-    @Autowired
-    private CategoryMapper categoryMapper;
     /**
      * 连接建立成功调用的方法
      */

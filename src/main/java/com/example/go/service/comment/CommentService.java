@@ -83,6 +83,8 @@ public class CommentService {
         System.out.println("___________________________"+categoryByCid);
         if( categoryByCid.getType().equals("酒店") ){
             commentMapper.changeHotelComment(cid,categoryByCid.getProductId());
+        }else if( categoryByCid.getType().equals("景点") ) {
+            commentMapper.changeAttractionComment(cid, categoryByCid.getProductId());
         }
     }
 }

@@ -4,8 +4,10 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.go.common.MessageNews;
 import com.example.go.entity.Order;
 import com.example.go.entity.OrderDetail;
+import com.example.go.entity.User;
 import com.example.go.mapper.OrderDetailMapper;
 import com.example.go.mapper.OrderMapper;
+import com.example.go.mapper.UserMapper;
 import com.example.go.utils.GetNowTime;
 import com.example.go.utils.JwtUtils;
 import com.example.go.utils.PageUtils;
@@ -27,6 +29,9 @@ public class OrderService {
 
     @Autowired
     private OrderDetailMapper orderDetailMapper;
+
+    @Autowired
+    private UserMapper userMapper;
 
     //返回生成的订单编号  规则：8位日期+6位以上自增id；
     public String getOrderCode(){
@@ -158,6 +163,21 @@ public class OrderService {
     //支付订单
     public boolean payOrder(int id,String type){
         int i = orderMapper.payOrder(id, type);
+        Order order = orderMapper.selectById(id);
+        int id1 = order.getUserId();
+        //修改积分
+        User user = userMapper.selectById(id1);
+        double score = order.getAmount() + user.getScore();
+        int i1 = userMapper.saveScore(id1, score);
+        if ( i!=0 ){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean payNoOrder(int id, String type) {
+        int i = orderMapper.payOrder(id, type);
+        Order order = orderMapper.selectById(id);
         if ( i!=0 ){
             return true;
         }

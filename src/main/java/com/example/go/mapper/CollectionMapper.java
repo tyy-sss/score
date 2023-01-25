@@ -19,6 +19,8 @@ public interface CollectionMapper extends BaseMapper<Collection> {
 
     int changeHotelCollectionNum(int cid,int id);
 
+    int changeAttractionCollectionNum(int cid, int id);
+
     int allCollectionForUser(int uid,String type);
 
     List<Hotel> HotelCollectionForUser(int uid,int current,int size);

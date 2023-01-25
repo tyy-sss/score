@@ -62,4 +62,27 @@ public class UserService {
     public User getUserByUsername(String username){
         return userMapper.getUserByUsername(username);
     }
+
+    public int changePerson(User user) {
+        LambdaUpdateWrapper<User> updateWrapper = new LambdaUpdateWrapper<User>()
+                .set(User::getUsername,user.getUsername())
+                .set(User::getSex,user.getSex())
+                .set(User::getAvatar,user.getAvatar())
+                .set(User::getAge,user.getAge())
+                .set(User::getBirthday,user.getBirthday())
+                .eq(User::getId,user.getId());
+        int update = userMapper.update(user, updateWrapper);
+        return update;
+    }
+
+    public User getPerson(int id) {
+        User user = userMapper.selectById(id);
+        return user;
+    }
+
+    //修改用户积分
+    public int saveScore(int id,double score){
+        int i = userMapper.saveScore(id, score);
+        return i;
+    }
 }

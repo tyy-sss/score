@@ -166,4 +166,9 @@
         update `order` set status = 2 , pay_method = #{type}
             where id = #{id}
     </update>
+
+    <update id="changeAmount">
+        update `order` set amount = #{price}
+            where id = #{id}
+    </update>
 </mapper>
